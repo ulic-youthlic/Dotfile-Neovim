@@ -54,8 +54,8 @@ local global = vim.g
 
     ---- 自动补全
     ---- :menu: 这个参数表示在自动完成时，如果有多个候选项可以选择，将显示一个包含候选项列表的菜单。这样你可以使用上下箭头键或 Tab 键来浏览候选项，并使用 Enter 键来选择。
-    ---- :menuone: 这个参数表示在只有一个候选项时，也显示候选项菜单。通常情况下，如果只有一个候选项，自动完成会自动选中该候选项。但设置了 menuone 后，即使只有一个候选项，也会显示菜单，让你可以使用 Enter 键来选择。
-    option.completeopt = { "menu", "menuone"}
+    ---- :noselect: 初始强制选择第一个选项，而不是根据匹配选择初始选项
+    option.completeopt = { "menu", "noselect" }
 
     ---- 高亮当前行
     option.cursorline = true
