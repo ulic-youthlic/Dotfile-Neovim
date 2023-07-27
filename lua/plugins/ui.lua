@@ -40,4 +40,10 @@ return {
             require'alpha'.setup(require'alpha.themes.dashboard'.config)
         end
     },
+    {
+        "RRethy/vim-illuminate",
+        config = function()
+            require('illuminate').configure()
+        end
+    },
 }
