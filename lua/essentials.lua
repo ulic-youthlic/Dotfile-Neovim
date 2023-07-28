@@ -110,8 +110,6 @@ local global = vim.g
     ---- Buffer 操作
     ---- 下一个 Buffer
     vim.keymap.set("n", "<Tab>", "<cmd>bNext<CR>")
-    ---- 前一个 Buffer
-    vim.keymap.set("n", "<S-Tab>", "<cmd>bp<CR>")
     ---- 关闭 Buffer
     vim.keymap.set("n", "<leader>x", "<cmd>bd<CR>")
 
@@ -135,7 +133,8 @@ local global = vim.g
     vim.keymap.set("n", "<leader>i", ":vsp<CR>")
     vim.keymap.set("n", "<leader>o", ":sp<CR>")
     ---- 关闭窗口
-    vim.keymap.set("n", "<leader>q", "<cmd>q<CR>")
+    vim.keymap.set("n", "<leader>qa", "<cmd>qa<CR>")
+    vim.keymap.set("n", "<leader>qc", "<cmd>q<CR>")
     
     ---- 快速行首行末跳转
     vim.keymap.set("n", "<A-h>", "0")
