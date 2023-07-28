@@ -16,7 +16,7 @@ return {
     {
         -- 安装 git 标志支持
         "lewis6991/gitsigns.nvim",
-        config = {
+        opts = { -- 等价于 config = function() require(gitsigns).setup(opts) end
             -- 打开 line blame
             current_line_blame = true,
             -- 配置 line blame 选项
