@@ -143,3 +143,6 @@ local global = vim.g
 
     ---- 符号对之间相互跳转
     vim.keymap.set("n", "m", "%", {desc = "Jump to the other of a pair of characters"})
+
+    ---- 执行宏
+    vim.keymap.set("n", [[\]], [[@]], {desc = "Execute macro recording"})
