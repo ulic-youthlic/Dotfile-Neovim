@@ -32,17 +32,17 @@ return {
         require('telescope').load_extension('fzf')
         local builtin = require('telescope.builtin')
         -- 搜索当前目录下的文件
-        vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+        vim.keymap.set('n', '<leader>ff', builtin.find_files, {desc = "Search files in the current path"})
         -- 搜索当前目录下文件的内容
-        vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+        vim.keymap.set('n', '<leader>fg', builtin.live_grep, {desc = "Search the contents in the current path"})
         -- 搜索 Neovim 打开的所有 Buffers
-        vim.keymap.set('n', '<leader><space>', builtin.buffers, {})
+        vim.keymap.set('n', '<leader><space>', builtin.buffers, {desc = "Search buffer"})
         -- 搜索 Neovim 的帮助文档 tag
-        vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+        vim.keymap.set('n', '<leader>fh', builtin.help_tags, {desc = "Search tag in help docs"})
         -- 搜索最近打开的文件
         vim.keymap.set('n', '<leader>?', builtin.oldfiles, 
             {
-                desc = '[?] Find recently opened files'
+                desc = 'Find recently opened files'
             }
         )
         -- 搜索当前打开的 Buffer 的内容
@@ -56,7 +56,7 @@ return {
                 )
             end,
             {
-                desc = '[?] Find recently opened files'
+                desc = 'Find recently opened files'
             }
         )
     end

@@ -109,37 +109,37 @@ local global = vim.g
 
     ---- Buffer 操作
     ---- 下一个 Buffer
-    vim.keymap.set("n", "<S-Tab>", "<cmd>bNext<CR>")
+    vim.keymap.set("n", "<S-Tab>", "<cmd>bNext<CR>", {desc = "Go to the next buffer"})
     ---- 关闭 Buffer
-    vim.keymap.set("n", "<leader>x", "<cmd>bd<CR>")
+    vim.keymap.set("n", "<leader>x", "<cmd>bd<CR>", {desc = "Close the current buffer"})
 
     ---- 重定义块可视化
-    vim.keymap.set("n", "<leader>v", "<C-v>")
+    vim.keymap.set("n", "<leader>v", "<C-v>", {desc = "Switch to Virtual block mode"})
 
     ---- 整体移动选中区域
-    vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-    vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+    vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", {desc = "Move the checked area up"})
+    vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", {desc = "Move the checked area down"})
 
     ---- 光标在窗口间移动
-    vim.keymap.set("n", "<C-h>", "<C-w>h")
-    vim.keymap.set("n", "<C-j>", "<C-w>j")
-    vim.keymap.set("n", "<C-k>", "<C-w>k")
-    vim.keymap.set("n", "<C-l>", "<C-w>l")
+    vim.keymap.set("n", "<C-h>", "<C-w>h", {desc = "Go to the left window"})
+    vim.keymap.set("n", "<C-j>", "<C-w>j", {desc = "Go to the lower window"})
+    vim.keymap.set("n", "<C-k>", "<C-w>k", {desc = "Go to the upper window"})
+    vim.keymap.set("n", "<C-l>", "<C-w>l", {desc = "Go to the right window"})
 
     ---- 保存
-    vim.keymap.set("n", "<leader>w", ":w<CR>")
+    vim.keymap.set("n", "<leader>w", ":w<CR>", {desc = "Save the current file"})
 
     ---- 分屏
-    vim.keymap.set("n", "<leader>i", ":vsp<CR>")
-    vim.keymap.set("n", "<leader>o", ":sp<CR>")
+    vim.keymap.set("n", "<leader>i", ":vsp<CR>", {desc = "Split the window vertically"})
+    vim.keymap.set("n", "<leader>o", ":sp<CR>", {desc = "Split the window horizontally"})
     ---- 关闭窗口
-    vim.keymap.set("n", "<leader>qo", "<cmd>qa<CR>")
-    vim.keymap.set("n", "<leader>qi", "<cmd>q<CR>")
+    vim.keymap.set("n", "<leader>qo", "<cmd>qa<CR>", {desc = "Close all windows"})
+    vim.keymap.set("n", "<leader>qi", "<cmd>q<CR>", {desc = "Close the current window"})
     
     ---- 快速行首行末跳转
-    vim.keymap.set("n", "<A-h>", "0")
-    vim.keymap.set("n", "<A-j>", "^")
-    vim.keymap.set("n", "<A-k>", "$")
+    vim.keymap.set("n", "<A-h>", "0", {desc = "Jump to the beginning of the line"})
+    vim.keymap.set("n", "<A-j>", "^", {desc = "Jump to the first non-white space character"})
+    vim.keymap.set("n", "<A-k>", "$", {desc = "Jump to the end of the line"})
 
     ---- 符号对之间相互跳转
-    vim.keymap.set("n", "m", "%")
+    vim.keymap.set("n", "m", "%", {desc = "Jump to the other of a pair of characters"})
