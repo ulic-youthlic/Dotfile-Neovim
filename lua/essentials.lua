@@ -136,7 +136,3 @@ local global = vim.g
     vim.keymap.set("n", "<leader>o", ":sp<CR>")
     ---- 关闭窗口
     vim.keymap.set("n", "<leader>q", "<cmd>q<CR>")
-
-    ---- 整行缩进
-    vim.keymap.set("n", "<C-h>", "V<")
-    vim.keymap.set("n", "<C-l>", "V>")
