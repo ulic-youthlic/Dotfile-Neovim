@@ -136,3 +136,11 @@ local global = vim.g
     vim.keymap.set("n", "<leader>o", ":sp<CR>")
     ---- 关闭窗口
     vim.keymap.set("n", "<leader>q", "<cmd>q<CR>")
+    
+    ---- 快速行首行末跳转
+    vim.keymap.set("n", "<A-h>", "0")
+    vim.keymap.set("n", "<A-j>", "^")
+    vim.keymap.set("n", "<A-k>", "$")
+
+    ---- 符号对之间相互跳转
+    vim.keymap.set("n", "m", "%")
