@@ -39,7 +39,10 @@ return {
     },
     config = function()
         local servers = {
-            lua_ls = {},
+            lua_ls = {
+                workspace = { checkThirdParty = false },
+                telemetry = { enable = false },
+            },
             pyright = {},
             bashls = {},
             clangd = {},
