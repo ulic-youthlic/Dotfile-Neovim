@@ -12,6 +12,7 @@ return {
             lua_ls = {},
             pyright = {},
             bashls = {},
+            clangd = {},
         }
 
         require('mason-lspconfig').setup({
