@@ -48,6 +48,7 @@ return {
             clangd = {},
             jsonls = {},
         }
+        local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
         require('neodev').setup({})
         require('neoconf').setup({})
@@ -56,7 +57,8 @@ return {
             handlers = {
                 function(server_name)
                     require('lspconfig')[server_name].setup {
-                        settings = servers[server_name]
+                        settings = servers[server_name],
+                        capabilities = capabilities,
                     }
                 end
             }
