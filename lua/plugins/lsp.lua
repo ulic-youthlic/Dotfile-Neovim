@@ -41,8 +41,8 @@ return {
                 vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, {buffer = ev.buf, desc = 'LSP: ' .. 'Type [D]efination'})
                 vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, {buffer = ev.buf, desc = 'LSP: ' .. '[r]e[n]ame'})
                 vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, {buffer = ev.buf, desc = 'LSP: ' .. '[c]ode [a]ction'})
-                -- vim.keymap.set('gr', require('telescope.builtin').lsp_references, {buffer = ev.buf, desc = 'LSP: ' .. '[g]oto [r]eferences'})
-                vim.keymap.set('n', 'gr', vim.lsp.buf.references, {buffer = ev.buf, desc = 'LSP: ' .. '[g]oto [r]eferences'})
+                vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references, {buffer = ev.buf, desc = 'LSP: ' .. '[g]oto [r]eferences'})
+                -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, {buffer = ev.buf, desc = 'LSP: ' .. '[g]oto [r]eferences'})
                 vim.keymap.set('n', '<A-f>', function()
                     vim.lsp.buf.format { async = true }
                 end, {buffer = ev.buf, desc = 'LSP: ' .. '[f]ormat code'})
