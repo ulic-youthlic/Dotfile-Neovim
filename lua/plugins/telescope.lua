@@ -8,7 +8,8 @@ return {
             -- 引入 fzf 插件作为依赖
             'nvim-telescope/telescope-fzf-native.nvim',
             -- 同步仓库后使用系统命令执行编译
-            build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
+            build =
+            'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
         },
     },
     -- 配置函数, 具体查阅 telescope.nvim 仓库
@@ -19,10 +20,10 @@ return {
             -- 引入 fzf 插件
             extensions = {
                 fzf = {
-                    fuzzy = true,                   
+                    fuzzy = true,
                     override_generic_sorter = true,
-                    override_file_sorter = true,  
-                    case_mode = "smart_case",    
+                    override_file_sorter = true,
+                    case_mode = "smart_case",
                 }
             }
         }
@@ -32,15 +33,15 @@ return {
         require('telescope').load_extension('fzf')
         local builtin = require('telescope.builtin')
         -- 搜索当前目录下的文件
-        vim.keymap.set('n', '<leader>ff', builtin.find_files, {desc = "Search files in the current path"})
+        vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = "Search files in the current path" })
         -- 搜索当前目录下文件的内容
-        vim.keymap.set('n', '<leader>fg', builtin.live_grep, {desc = "Search the contents in the current path"})
+        vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = "Search the contents in the current path" })
         -- 搜索 Neovim 打开的所有 Buffers
-        vim.keymap.set('n', '<leader><space>', builtin.buffers, {desc = "Search buffer"})
+        vim.keymap.set('n', '<leader><space>', builtin.buffers, { desc = "Search buffer" })
         -- 搜索 Neovim 的帮助文档 tag
-        vim.keymap.set('n', '<leader>fh', builtin.help_tags, {desc = "Search tag in help docs"})
+        vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = "Search tag in help docs" })
         -- 搜索最近打开的文件
-        vim.keymap.set('n', '<leader>?', builtin.oldfiles, 
+        vim.keymap.set('n', '<leader>?', builtin.oldfiles,
             {
                 desc = 'Find recently opened files'
             }

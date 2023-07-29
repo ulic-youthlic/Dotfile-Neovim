@@ -1,5 +1,5 @@
 return {
-   "nvim-treesitter/nvim-treesitter",
+    "nvim-treesitter/nvim-treesitter",
     main = "nvim-treesitter.configs",
     build = ":TSUpdate",
     opts = {

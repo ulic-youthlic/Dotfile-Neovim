@@ -2,8 +2,8 @@ return {
     {
         "rhysd/accelerated-jk",
         config = function()
-            vim.keymap.set("n", "j", "<Plug>(accelerated_jk_gj)", {desc = "Faster and faster 'j'"})
-            vim.keymap.set("n", "k", "<Plug>(accelerated_jk_gk)", {desc = "Faster and faster 'k'"})
+            vim.keymap.set("n", "j", "<Plug>(accelerated_jk_gj)", { desc = "Faster and faster 'j'" })
+            vim.keymap.set("n", "k", "<Plug>(accelerated_jk_gk)", { desc = "Faster and faster 'k'" })
         end
     },
     {
@@ -12,11 +12,14 @@ return {
         config = function()
             require("persistence").setup()
             -- restore the session for the current directory
-            vim.api.nvim_set_keymap("n", "<leader>qs", [[<cmd>lua require("persistence").load()<cr>]], {desc = "Restore the layout for the current director"})
+            vim.api.nvim_set_keymap("n", "<leader>lc", [[<cmd>lua require("persistence").load()<cr>]],
+                { desc = "Restore the [l]ayout for the [c]urrent director" })
             -- restore the last session
-            vim.api.nvim_set_keymap("n", "<leader>ql", [[<cmd>lua require("persistence").load({ last = true })<cr>]], {desc = "Restore the last layout"})
+            vim.api.nvim_set_keymap("n", "<leader>ll", [[<cmd>lua require("persistence").load({ last = true })<cr>]],
+                { desc = "Restore the [l]ast [l]ayout" })
             -- stop Persistence => session won't be saved on exit
-            vim.api.nvim_set_keymap("n", "<leader>qd", [[<cmd>lua require("persistence").stop()<cr>]], {desc = "Stop save the layout of windows and buffers"})
+            vim.api.nvim_set_keymap("n", "<leader>ld", [[<cmd>lua require("persistence").stop()<cr>]],
+                { desc = "Stop save the layout of windows and buffers" })
         end
     },
     {
@@ -36,7 +39,7 @@ return {
         },
         config = function()
             require("flash").setup()
-            vim.keymap.set({"n", "x", "o"}, "s",
+            vim.keymap.set({ "n", "x", "o" }, "s",
                 function()
                     require("flash").jump(
                         {
@@ -52,7 +55,7 @@ return {
                     desc = "Toggle to specific character"
                 }
             )
-            vim.keymap.set({"n", "x", "o"}, "<C-s>",
+            vim.keymap.set({ "n", "x", "o" }, "<C-s>",
                 function()
                     require("flash").treesitter()
                 end,
@@ -68,7 +71,7 @@ return {
                     desc = "Toggle to specific character, and operate it"
                 }
             )
-            vim.keymap.set({"o", "x"}, "R",
+            vim.keymap.set({ "o", "x" }, "R",
                 function()
                     require("flash").treesitter_search()
                 end,
@@ -88,7 +91,7 @@ return {
         "ellisonleao/glow.nvim",
         config = function()
             require("glow").setup()
-            vim.keymap.set("n", "<A-g>", ":Glow<CR>", {desc = "Preview the current file"})
+            vim.keymap.set("n", "<A-g>", ":Glow<CR>", { desc = "Preview the current file" })
         end
     },
     {
@@ -101,7 +104,7 @@ return {
             },
             config = function()
                 require("neo-tree").setup()
-                vim.keymap.set("n", "<leader>e", "<cmd>Neotree toggle<CR>", {desc = "Open the file tree"})
+                vim.keymap.set("n", "<leader>e", "<cmd>Neotree toggle<CR>", { desc = "Open the file tree" })
             end
         }
     },

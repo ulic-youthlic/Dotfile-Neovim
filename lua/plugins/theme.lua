@@ -17,7 +17,7 @@ return {
     config = function()
         -- 设置 Neovim 主题为 tokyonigh-storm
         ---- :vim.cmd(): 执行 Vim Script 并返回值
-        vim.cmd[[colorscheme tokyonight-storm]]
+        vim.cmd [[colorscheme tokyonight-storm]]
         -- 加载 lualine 插件
         require('lualine').setup({
             -- 更改配置
