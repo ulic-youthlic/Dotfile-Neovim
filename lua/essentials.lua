@@ -127,7 +127,7 @@ local global = vim.g
     vim.keymap.set("n", "<C-l>", "<C-w>l", {desc = "Go to the right window"})
 
     ---- 保存
-    vim.keymap.set("n", "<leader>w", ":w<CR>", {desc = "Save the current file"})
+    vim.keymap.set("n", "<leader>wi", ":w<CR>", {desc = "Save the current file"})
 
     ---- 分屏
     vim.keymap.set("n", "<leader>i", ":vsp<CR>", {desc = "Split the window vertically"})
