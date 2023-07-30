@@ -43,6 +43,7 @@ return {
                 workspace = { checkThirdParty = false },
                 telemetry = { enable = false },
             },
+            pylsp = {},
             pyright = {},
             bashls = {},
             clangd = {},
