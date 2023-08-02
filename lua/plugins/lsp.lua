@@ -111,9 +111,9 @@ return {
 
 
                 vim.keymap.set('n', '<leader>rn', "<cmd>Lspsaga rename ++project<CR>",
-                    { buffer = ev.buf, desc = 'LSP: ' .. '[r]e[n]ame' })
+                    { buffer = ev.buf, desc = 'LSP: [r]e[n]ame' })
                 vim.keymap.set({ 'n', 'v' }, '<leader>ca', "<cmd>Lspsaga code_action<CR>",
-                    { buffer = ev.buf, desc = 'LSP: ' .. '[c]ode [a]ction' })
+                    { buffer = ev.buf, desc = 'LSP: [c]ode [a]ction' })
             end
         })
     end
