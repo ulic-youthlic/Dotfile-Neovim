@@ -1,17 +1,36 @@
 return {
     {
-        -- 添加插件
         "akinsho/bufferline.nvim",
-        -- 启用插件
-        config = {} -- 也可以写成 true
-        -- 等价于
-        -- config = function()
-        --     require("bufferline").setup({})
-        -- end
+        config = {}
     },
     {
-        "lukas-reineke/indent-blankline.nvim",
-        config = true
+        "shellRaining/hlchunk.nvim",
+        event = { "UIEnter" },
+        opts = {
+            indent = {
+                chars = {
+                    "│",
+                    "¦",
+                    "┆",
+                    "┊",
+                },
+                use_treesitter = true,
+            },
+            blank = {
+                chars = {
+                    "․",
+                    "⁚",
+                    "⁖",
+                    "⁘",
+                    "⁙",
+                },
+                style = {
+                    "#666666",
+                    "#555555",
+                    "#444444",
+                },
+            }
+        },
     },
     {
         -- 安装 git 标志支持
