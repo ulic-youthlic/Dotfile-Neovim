@@ -40,8 +40,10 @@ return {
     config = function()
         local servers = {
             lua_ls = {
-                workspace = { checkThirdParty = false },
-                telemetry = { enable = false },
+                Lua = {
+                    workspace = { checkThirdParty = false },
+                    telemetry = { enable = false },
+                },
             },
             pylsp = {},
             pyright = {},
