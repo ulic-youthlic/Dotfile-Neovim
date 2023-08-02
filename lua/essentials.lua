@@ -2,19 +2,81 @@ local option = vim.opt
 local buffer = vim.b
 local global = vim.g
 
--- 0.环境参数
+
+-- 0.配置参数
 ---- undo 文件的目录
-UNDO_FILE_DIR = "$HOME/.local/share/nvim/undo"
+local UNDO_FILE_DIR = [[$HOME/.local/share/nvim/undo]]
 ---- 是否开启终端真色彩显示
-TERMINAL_GUI_COLORS = true
+local TERMINAL_GUI_COLORS = true
 ---- leader 键
 global.mapleader = " "
 ---- 编码方式
 buffer.fileencoding = "utf-8"
+---- key mappings
+local nmappings = {
+    ---- 禁用上下左右
+    { mode = { "n", "i", "v" }, from = "<Up>",       to = "<Nop>",            desc = "Dont use Up." },
+    { mode = { "n", "i", "v" }, from = "<Down>",     to = "<Nop>",            desc = "Dont use Down." },
+    { mode = { "n", "i", "v" }, from = "<Left>",     to = "<Nop>",            desc = "Dont use Left." },
+    { mode = { "n", "i", "v" }, from = "<Right>",    to = "<Nop>",            desc = 'Dont use Right.' },
+
+    ---- Buffer 操作
+    ---- 下一个 Buffer
+    { mode = "n",               from = "<S-Tab>",    to = "<cmd>bNext<CR>",   desc = "Go to the next buffer" },
+    ---- 关闭 Buffer
+    { mode = "n",               from = "<leader>x",  to = "<cmd>bd<CR>",      desc = "Close the current buffer" },
+
+    ---- 重定义块可视化
+    { mode = "n",               from = "<leader>v",  to = "<C-v>",            desc = "Switch to Virtual block mode" },
+
+    ---- 整体移动选中区域
+    { mode = "v",               from = "J",          to = ":m '>+1<CR>gv=gv", desc = "Move the checked area up" },
+    { mode = "v",               from = "K",          to = ":m '<-2<CR>gv=gv", desc = "Move the checked area down" },
+
+    ---- 光标在窗口间移动
+    { mode = "n",               from = "<C-h>",      to = "<C-w>h",           desc = "Go to the left window" },
+    { mode = "n",               from = "<C-j>",      to = "<C-w>j",           desc = "Go to the lower window" },
+    { mode = "n",               from = "<C-k>",      to = "<C-w>k",           desc = "Go to the upper window" },
+    { mode = "n",               from = "<C-l>",      to = "<C-w>l",           desc = "Go to the right window" },
+
+    ---- 保存
+    { mode = "n",               from = "<leader>wi", to = ":w<CR>",           desc = "Save the current file" },
+    { mode = "n",               from = "<leader>wo", to = ":wa<CR>",          desc = "Save all file" },
+
+    ---- 分屏
+    { mode = "n",               from = "<leader>i",  to = ":vsp<CR>",         desc = "Split the window vertically" },
+    { mode = "n",               from = "<leader>o",  to = ":sp<CR>",          desc = "Split the window horizontally" },
+    ---- 关闭窗口
+    { mode = "n",               from = "<leader>qo", to = "<cmd>qa<CR>",      desc = "Close all windows" },
+    { mode = "n",               from = "<leader>qi", to = "<cmd>q<CR>",       desc = "Close the current window" },
+    { mode = "n",               from = "<leader>qq", to = "<C-w>o",           desc = "Close the other windows" },
+
+    ---- 快速行首行末跳转
+    {
+        mode = "n",
+        from = "<S-0>",
+        to = "^",
+        desc =
+        "Jump to the first non-white space character"
+    },
+    { mode = "n", from = "<leader>L", to = "$",   desc = "Jump to the end of the line" },
+
+    ---- 符号对之间相互跳转
+    {
+        mode = "n",
+        from = "m",
+        to = "%",
+        desc =
+        "Jump to the other of a pair of characters"
+    },
+
+    ---- 执行宏
+    { mode = "n", from = [[\]],       to = [[@]], desc = "Execute macro recording" },
+}
 
 -- 1.Global Settings --
 ---- 原生左下角的模式显示
-option.showmode = false     -- 为 plugin 做准备
+option.showmode = false -- 为 plugin 做准备
 
 ---- 退格键的作用
 ---- :indent: 可以删除 nvim 自动添加的缩进
@@ -36,9 +98,9 @@ option.autoindent = true
 option.smartindent = true
 
 ---- 显示行号
-option.nu = true      -- option.number = true
+option.nu = true  -- option.number = true
 ---- 显示相对行号
-option.rnu = true     -- option.relativenumber = true
+option.rnu = true -- option.relativenumber = true
 
 ---- 命令模式下 Tab 键候选菜单开启
 option.wildmenu = true
@@ -101,50 +163,6 @@ option.splitright = true
 option.splitbelow = true
 
 -- 2.Buffer Settings --
----- 禁用上下左右
-vim.keymap.set({ "n", "i", "v" }, "<Up>", "<Nop>")
-vim.keymap.set({ "n", "i", "v" }, "<Down>", "<Nop>")
-vim.keymap.set({ "n", "i", "v" }, "<Left>", "<Nop>")
-vim.keymap.set({ "n", "i", "v" }, "<Right>", "<Nop>")
-
----- Buffer 操作
----- 下一个 Buffer
-vim.keymap.set("n", "<S-Tab>", "<cmd>bNext<CR>", { desc = "Go to the next buffer" })
----- 关闭 Buffer
-vim.keymap.set("n", "<leader>x", "<cmd>bd<CR>", { desc = "Close the current buffer" })
-
----- 重定义块可视化
-vim.keymap.set("n", "<leader>v", "<C-v>", { desc = "Switch to Virtual block mode" })
-
----- 整体移动选中区域
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move the checked area up" })
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move the checked area down" })
-
----- 光标在窗口间移动
-vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Go to the left window" })
-vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Go to the lower window" })
-vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Go to the upper window" })
-vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Go to the right window" })
-
----- 保存
-vim.keymap.set("n", "<leader>wi", ":w<CR>", { desc = "Save the current file" })
-vim.keymap.set("n", "<leader>wo", ":wa<CR>", { desc = "Save all file" })
-
----- 分屏
-vim.keymap.set("n", "<leader>i", ":vsp<CR>", { desc = "Split the window vertically" })
-vim.keymap.set("n", "<leader>o", ":sp<CR>", { desc = "Split the window horizontally" })
----- 关闭窗口
-vim.keymap.set("n", "<leader>qo", "<cmd>qa<CR>", { desc = "Close all windows" })
-vim.keymap.set("n", "<leader>qi", "<cmd>q<CR>", { desc = "Close the current window" })
-vim.keymap.set("n", "<leader>qq", "<C-w>o", { desc = "Close the other windows" })
-
----- 快速行首行末跳转
-vim.keymap.set("n", "<C-h>", "0", { desc = "Jump to the beginning of the line" })
-vim.keymap.set("n", "<C-j>", "^", { desc = "Jump to the first non-white space character" })
-vim.keymap.set("n", "<C-k>", "$", { desc = "Jump to the end of the line" })
-
----- 符号对之间相互跳转
-vim.keymap.set("n", "m", "%", { desc = "Jump to the other of a pair of characters" })
-
----- 执行宏
-vim.keymap.set("n", [[\]], [[@]], { desc = "Execute macro recording" })
+for _, map in ipairs(nmappings) do
+    vim.keymap.set(map.mode, map.from, map.to, { desc = map.desc })
+end
