@@ -1,7 +1,7 @@
 -- 返回插件的配置列表
 return {
     -- 加入 tokyonight 主题
-    "folke/tokyonight.nvim",
+    "Mofiqul/dracula.nvim",
     -- 安装与 tokyonight 相兼容的插件，可以不以依赖的形式安装
     dependencies = {
         -- 下方状态栏插件
@@ -17,19 +17,19 @@ return {
     config = function()
         -- 设置 Neovim 主题为 tokyonigh-storm
         ---- :vim.cmd(): 执行 Vim Script 并返回值
-        vim.cmd [[colorscheme tokyonight-storm]]
+        vim.cmd [[colorscheme dracula]]
         -- 加载 lualine 插件
         require('lualine').setup({
             -- 更改配置
             options = {
                 -- 设置主题为 tokyonight
-                theme = 'tokyonight'
+                theme = 'dracula-nvim'
             },
         })
         -- 启用上方标题栏插件
         require('barbecue').setup {
             -- 设置主题为 tokyonight
-            theme = 'tokyonight',
+            theme = 'dracula-nvim',
         }
     end
 }

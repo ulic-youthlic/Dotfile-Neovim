@@ -25,7 +25,7 @@ local plugins = "plugins"
 local opts = {
     install = {
         -- 设置 lazy.nvim 的主题为 tokyonight-storm
-        colorscheme = { "tokyonight-storm" },
+        colorscheme = { "dracula-nvim" },
     },
 }
 
