@@ -1,6 +1,6 @@
 return {
     "neovim/nvim-lspconfig",
-    event = "InsertEnter",
+    event = "BufNew",
     dependencies = {
         {
             "williamboman/mason.nvim",
@@ -15,12 +15,12 @@ return {
         {
             "j-hui/fidget.nvim",
             tag = "legacy",
-            event = "lspattach",
+            event = "LspAttach",
             opts = {},
         },
         {
             "nvimdev/lspsaga.nvim",
-            event = "lspattach",
+            event = "LspAttach",
             opts = {
                 code_action = {
                     keys = {
