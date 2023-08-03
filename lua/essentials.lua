@@ -166,6 +166,16 @@ option.splitright = true
 ---- 打开新文件在下方显示
 option.splitbelow = true
 
+---- 高亮粘贴区域
+vim.api.nvim_create_autocmd('TextYankPost', {
+    group = vim.api.nvim_create_augroup('highlight_yank', {}),
+    desc = 'Hightlight selection on yank',
+    pattern = '*',
+    callback = function()
+        vim.highlight.on_yank { higroup = 'IncSearch', timeout = 200 }
+    end,
+})
+
 -- 2.Buffer Settings --
 for _, map in ipairs(nmappings) do
     vim.keymap.set(map.mode, map.from, map.to, { desc = map.desc })
