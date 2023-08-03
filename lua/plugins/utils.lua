@@ -34,9 +34,7 @@ return {
     },
     {
         "folke/flash.nvim",
-        dependencies = {
-            "nvim-treesitter/nvim-treesitter",
-        },
+        event = "BufNew",
         config = function()
             require("flash").setup()
             vim.keymap.set({ "n", "x", "o" }, "s",
@@ -89,6 +87,7 @@ return {
     },
     {
         "ellisonleao/glow.nvim",
+        event = "VeryLazy",
         config = function()
             require("glow").setup()
             vim.keymap.set("n", "<A-g>", ":Glow<CR>", { desc = "Preview the current file" })

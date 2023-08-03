@@ -2,6 +2,7 @@
 return {
     -- 加入 tokyonight 主题
     "Mofiqul/dracula.nvim",
+    lazy = false,
     -- 安装与 tokyonight 相兼容的插件，可以不以依赖的形式安装
     dependencies = {
         -- 下方状态栏插件
