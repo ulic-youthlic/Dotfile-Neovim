@@ -54,12 +54,13 @@ local nmappings = {
     ---- 快速行首行末跳转
     {
         mode = "n",
-        from = "<S-0>",
+        from = "<leader>J",
         to = "^",
         desc =
         "Jump to the first non-white space character"
     },
-    { mode = "n", from = "<leader>L", to = "$",   desc = "Jump to the end of the line" },
+    { mode = "n", from = "<leader>H", to = "0", desc = "Jump to the beginning of the line" },
+    { mode = "n", from = "<leader>L", to = "$", desc = "Jump to the end of the line" },
 
     ---- 符号对之间相互跳转
     {
@@ -71,7 +72,10 @@ local nmappings = {
     },
 
     ---- 执行宏
-    { mode = "n", from = [[\]],       to = [[@]], desc = "Execute macro recording" },
+    { mode = "n",          from = [[\]],       to = [[@]], desc = "Execute macro recording" },
+
+    ---- Yank into regions
+    { mode = { "v", "n" }, from = "<leader>y", to = '"+y', desc = "Yank content into sys clipboard" },
 }
 
 -- 1.Global Settings --
