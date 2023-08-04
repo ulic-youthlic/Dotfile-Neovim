@@ -1,6 +1,5 @@
 return {
     "neovim/nvim-lspconfig",
-    event = "BufNew",
     dependencies = {
         {
             "williamboman/mason.nvim",
@@ -8,7 +7,6 @@ return {
         },
         {
             "williamboman/mason-lspconfig.nvim",
-            event = "InsertEnter",
         },
         "folke/neoconf.nvim",
         "folke/neodev.nvim",
@@ -55,6 +53,7 @@ return {
             bashls = {},
             clangd = {},
             jsonls = {},
+            cmake = {},
         }
         local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
