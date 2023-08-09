@@ -54,6 +54,8 @@ return {
             clangd = {},
             jsonls = {},
             cmake = {},
+            powershell_es = {},
+            shellcheck = {},
         }
         local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
