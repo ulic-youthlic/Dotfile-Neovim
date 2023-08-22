@@ -1,3 +1,7 @@
+local get_os = function()
+    return package.config:sub(1, 1) == "\\" and "win" or "unix"
+end
+
 return {
     "neovim/nvim-lspconfig",
     dependencies = {
@@ -50,13 +54,16 @@ return {
             },
             pylsp = {},
             pyright = {},
-            bashls = {},
             clangd = {},
             jsonls = {},
             cmake = {},
-            powershell_es = {},
-            shellcheck = {},
         }
+        if (get_os() == 'unix')
+        then
+            servers.bashls = {}
+        else
+            servers.powershell_es = {}
+        end
         local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
         require('neodev').setup({})
