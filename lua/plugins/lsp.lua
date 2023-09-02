@@ -53,7 +53,6 @@ return {
                 },
             },
             pylsp = {},
-            pyright = {},
             clangd = {},
             jsonls = {},
             cmake = {},
