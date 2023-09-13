@@ -57,6 +57,16 @@ return {
             jsonls = {},
             cmake = {},
         }
+        if (vim.fn.executable('rustc') == 1)
+        then
+            servers.rust_analyzer = {
+                ['rust-analyzer'] = {
+                    cargo = {
+                        allFeatures = true,
+                    },
+                },
+            }
+        end
         if (get_os() == 'unix')
         then
             servers.bashls = {}
