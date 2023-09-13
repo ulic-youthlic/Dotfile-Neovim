@@ -78,13 +78,7 @@ return {
                 }
             )
         end,
-    },
-    {
-        "kamykn/spelunker.vim",
-        config = function()
-            vim.g.spelunker_check_type = 2
-        end
-    },
+        },
     {
         "ellisonleao/glow.nvim",
         event = "VeryLazy",
@@ -150,7 +144,7 @@ return {
                     },
                 }
             )
-            vim.keymap.set({ "n", "v" }, "<C-m>", "<cmd>MCstart<CR>", { desc = "Start multi cursors mode" })
+            vim.keymap.set({ "n", "v" }, "<C-m>", "MCstart<CR>", { desc = "Start multi cursors mode" })
         end,
         cmd = { 'MCstart', 'MCvisual', 'MCclear', 'MCpattern', 'MCvisualPattern', 'MCunderCursor' },
         keys = {
