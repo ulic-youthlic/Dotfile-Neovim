@@ -78,7 +78,7 @@ return {
                 }
             )
         end,
-        },
+    },
     {
         "ellisonleao/glow.nvim",
         event = "VeryLazy",
@@ -155,5 +155,10 @@ return {
                 desc = 'Create a selection for selcted text or word under the cursor',
             },
         },
+    },
+    {
+        'junegunn/vim-peekaboo',
+        init = function()
+        end,
     }
 }
