@@ -26,7 +26,7 @@ local opts = {
     lazy = true,
     install = {
         -- 设置 lazy.nvim 的主题为 tokyonight-storm
-        colorscheme = { "dracula-nvim" },
+        colorscheme = { "catppuccin-macchiato" },
     },
 }
 
