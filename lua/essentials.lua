@@ -158,6 +158,8 @@ option.undodir = vim.fn.expand(UNDO_FILE_DIR)
 ---- 允许 Neovim 启动时加载当前目录的 init.vim 或 init.lua
 option.exrc = true
 
+vim.cmd [[set scrolloff=5]]
+
 ---- 过长行不拆成多行显示，仅展示前半部分
 option.wrap = false
 
