@@ -1,6 +1,61 @@
+-- get os
 local get_os = function()
     return package.config:sub(1, 1) == "\\" and "win" or "unix"
 end
+
+-- variables for lsp
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+-- used lsp
+local servers = {
+    lua_ls = {
+        Lua = {
+            workspace = { checkThirdParty = false },
+            telemetry = { enable = false },
+        },
+    },
+    pylsp = {},
+    clangd = {},
+    jsonls = {},
+    cmake = {},
+}
+if (vim.fn.executable('rustc') == 1)
+then
+    servers.rust_analyzer = {
+        ['rust-analyzer'] = {
+            cargo = {
+                allFeatures = true,
+            },
+        },
+    }
+end
+if (get_os() == 'unix')
+then
+    servers.bashls = {}
+else
+    servers.powershell_es = {}
+end
+
+-- keybinds for lspsaga
+local key_binds_for_lsp_saga = {
+    code_action = {
+        keys = {
+            quit = "<leader>qi",
+        },
+    },
+    outline = {
+        keys = {
+            quit = "<leader>qi",
+            toggle_or_jump = "x",
+            jump = "i",
+        },
+    },
+    diagnostic = {
+        keys = {
+            quit = [[<leader>qq]]
+        },
+    },
+}
 
 return {
     "neovim/nvim-lspconfig",
@@ -23,58 +78,10 @@ return {
         {
             "nvimdev/lspsaga.nvim",
             event = "LspAttach",
-            opts = {
-                code_action = {
-                    keys = {
-                        quit = "<leader>qi",
-                    },
-                },
-                outline = {
-                    keys = {
-                        quit = "<leader>qi",
-                        toggle_or_jump = "x",
-                        jump = "i",
-                    },
-                },
-                diagnostic = {
-                    keys = {
-                        quit = [[<leader>qq]]
-                    },
-                },
-            },
+            opts = key_binds_for_lsp_saga,
         },
     },
     config = function()
-        local servers = {
-            lua_ls = {
-                Lua = {
-                    workspace = { checkThirdParty = false },
-                    telemetry = { enable = false },
-                },
-            },
-            pylsp = {},
-            clangd = {},
-            jsonls = {},
-            cmake = {},
-        }
-        if (vim.fn.executable('rustc') == 1)
-        then
-            servers.rust_analyzer = {
-                ['rust-analyzer'] = {
-                    cargo = {
-                        allFeatures = true,
-                    },
-                },
-            }
-        end
-        if (get_os() == 'unix')
-        then
-            servers.bashls = {}
-        else
-            servers.powershell_es = {}
-        end
-        local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
         require('neodev').setup({})
         require('neoconf').setup({})
         require('mason-lspconfig').setup({
@@ -82,6 +89,7 @@ return {
             handlers = {
                 function(server_name)
                     require('lspconfig')[server_name].setup {
+                        inlay_hints = { enable = true, },
                         settings = servers[server_name],
                         capabilities = capabilities,
                     }
